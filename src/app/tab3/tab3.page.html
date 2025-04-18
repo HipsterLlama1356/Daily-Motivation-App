@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <!-- I let the user pick how often they get notifications -->
   <ion-item>
     <ion-label>Notifications</ion-label>
     <ion-select [(ngModel)]="notifFreq">
@@ -14,15 +15,18 @@
     </ion-select>
   </ion-item>
 
+  <!-- I toggle whether to show saved favourites on the home screen -->
   <ion-item>
     <ion-label>Show Favourites</ion-label>
     <ion-toggle [(ngModel)]="dataService.showFav"></ion-toggle>
   </ion-item>
 
+  <!-- Section title for categories I want to include in quotes -->
   <ion-item lines="none">
     <ion-label>Categories</ion-label>
   </ion-item>
 
+  <!-- I list all categories with checkboxes so I can pick which ones to use -->
   <ion-list>
     <ion-item *ngFor="let cat of allCategories">
       <ion-checkbox 
@@ -34,6 +38,6 @@
     </ion-item>
   </ion-list>
 
-  <!-- debug button to prove values change -->
+  <!-- I can press this button to log my current settings for debugging -->
   <ion-button expand="full" (click)="logSettings()">Log Settings</ion-button>
 </ion-content>

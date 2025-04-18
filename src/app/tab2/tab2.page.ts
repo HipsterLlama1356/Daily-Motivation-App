@@ -11,12 +11,15 @@ import { DataService } from '../data.service';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
+  // I store past quotes here after loading from my DataService
   constructor(private dataService: DataService) {}
+  // I inject the data service to get my quote history
 
   pastQuotes: string[] = [
+    // I inject the data service to get my quote history
   ];
 
+  // When the page starts, I load all saved quotes into pastQuotes
   ngOnInit() {
     this.pastQuotes = this.dataService.getItems();
   }

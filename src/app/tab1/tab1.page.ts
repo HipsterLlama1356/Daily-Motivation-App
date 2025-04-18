@@ -5,13 +5,13 @@ import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-tab1',
-  standalone: true,                 // <– stand‑alone component
+  standalone: true,
   imports: [IonicModule, CommonModule],
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-
+  // I set up categories with lists of quotes for each one
   quotes: {[key: string]: string[]} = {
     Inspiration: [
       "Believe you can and you're halfway there.",
@@ -75,30 +75,41 @@ export class Tab1Page {
     ]
   };
 
+  // I store quotes the user marks as favorites
   favs: string[] = [];
+  // I keep the currently shown quote here
   currentQuote: string = '';
+  // I keep track of which category the quote came from
   quoteCategory: string = '';
 
   constructor(public dataService: DataService) {
+    // I load one quote when the page starts
     this.refreshQuote();
   }
 
+   // This picks a random quote from user‑chosen categories
   refreshQuote(): void {
     const selectedCategories = this.dataService.chosenCategories;
+    // If no category is chosen, I prompt the user
     if(selectedCategories.length === 0){
       this.currentQuote = "Please select a category in settings.";
       return;
     }
 
+     // I pick a random category
     const randomCategory = selectedCategories[Math.floor(Math.random() * selectedCategories.length)];
+    // I get the list of quotes for that category
     const quotesArray = this.quotes[randomCategory];
+    // I pick a random quote from the list
     this.quoteCategory = randomCategory;
     this.currentQuote = quotesArray[Math.floor(Math.random() * quotesArray.length)];
 
+    // I add this quote to the history in my data service
     this.dataService.addItem(this.currentQuote);
     console.log(`New quote (${randomCategory}):`, this.currentQuote);
   }
 
+  // I let the user add the quote to their favorites
   addToFavs(): void {
     if(!this.favs.includes(this.currentQuote)){
       this.favs.push(this.currentQuote);

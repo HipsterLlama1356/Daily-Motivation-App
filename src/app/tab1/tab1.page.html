@@ -1,4 +1,5 @@
 <ion-header>
+  <!--Header-->
   <ion-toolbar color="primary">
     <ion-title>Daily Motivation</ion-title>
   </ion-toolbar>
@@ -8,20 +9,24 @@
   <ion-card>
     <ion-card-header>
       <ion-card-title>Today's Quote</ion-card-title>
+       <!-- Showing the quote category I chose -->
       <ion-card-title>{{ quoteCategory }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
+      <!-- The actual quote text -->
       {{ currentQuote }}
+      <!-- Button: I tap to save the quote to favourites -->
       <ion-button expand="full" (click)="addToFavs()">Add to favorites</ion-button>
     </ion-card-content>
   </ion-card>
 
+   <!-- Button: I tap to get a new random quote -->
   <ion-button expand="full" (click)="refreshQuote()">Refresh Quote</ion-button>
 
   <ion-card-header *ngIf="dataService.showFav">
     <ion-card-title>Favorites</ion-card-title>
     <ion-list>
-    
+       <!-- Loop through my favourite quotes -->
       <ion-item *ngFor="let q of favs">
         {{ q }}
       </ion-item>

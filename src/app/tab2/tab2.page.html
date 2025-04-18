@@ -1,11 +1,14 @@
 <ion-header>
+   <!-- My history screen header -->
   <ion-toolbar color="primary">
     <ion-title>History</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+   <!-- List all quotes I've shown so far -->
   <ion-list>
+    <!-- Loop through each past quote and display it -->
     <ion-item *ngFor="let q of pastQuotes">
       {{ q }}
     </ion-item>
