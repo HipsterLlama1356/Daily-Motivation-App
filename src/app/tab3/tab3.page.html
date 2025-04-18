@@ -23,6 +23,17 @@
     <ion-label>Categories</ion-label>
   </ion-item>
 
+  <ion-list>
+    <ion-item *ngFor="let cat of allCategories">
+      <ion-checkbox 
+        slot="start" 
+        [checked]="isChecked(cat)"
+        (ionChange)="toggleCategory(cat, $event)">
+      </ion-checkbox>
+      <ion-label>{{ cat }}</ion-label>
+    </ion-item>
+  </ion-list>
+
   <!-- debug button to prove values change -->
   <ion-button expand="full" (click)="logSettings()">Log Settings</ion-button>
 </ion-content>
