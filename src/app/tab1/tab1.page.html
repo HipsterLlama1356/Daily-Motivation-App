@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Daily Motivation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Today's Quote</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ currentQuote }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="full" (click)="refreshQuote()">Refresh Quote</ion-button>
+</ion-content>
