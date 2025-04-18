@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-tab1',
@@ -17,9 +18,12 @@ export class Tab1Page {
   ];
   currentQuote = this.quotes[0];
 
+  constructor(private dataService: DataService) {}
+
   refreshQuote(): void {
     const i = Math.floor(Math.random() * this.quotes.length);
     this.currentQuote = this.quotes[i];
+    this.dataService.addItem(this.currentQuote);
     console.log('New quote:', this.currentQuote);
   }
 }
