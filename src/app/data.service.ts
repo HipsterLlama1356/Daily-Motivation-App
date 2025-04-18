@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 export class DataService {
   public items: string[] = [];
 
+  showFav: boolean = true;
+
   addItem(item: string) {
     this.items.push(item);
   }

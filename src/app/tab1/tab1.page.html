@@ -11,8 +11,20 @@
     </ion-card-header>
     <ion-card-content>
       {{ currentQuote }}
+      <ion-button expand="full" (click)="addToFavs()">Add to favorites</ion-button>
     </ion-card-content>
   </ion-card>
 
   <ion-button expand="full" (click)="refreshQuote()">Refresh Quote</ion-button>
+
+  <ion-card-header *ngIf="dataService.showFav">
+    <ion-card-title>Favorites</ion-card-title>
+    <ion-list>
+    
+      <ion-item *ngFor="let q of favs">
+        {{ q }}
+      </ion-item>
+    </ion-list>
+  </ion-card-header>
+  
 </ion-content>
